@@ -1,0 +1,456 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1 class="orange_text">SASS(SCSS)</h1>
+					<h3>CSS preprocessor</h3>					
+					<p>
+						<small>Created by <a href="https://github.com/Exzorcist">Karpovich Ivan</a></small>
+					</p>	
+				</section>				
+				<section>
+					<h2>CSS preprocessor</h2>
+					<h3 class="orange_text">What's this? and What it eats?</h3>
+					<img width="60%" height="60%" data-src='img/css_preprocessor.png'>
+				</section>
+				<section>
+					<h2>possibility <span class="orange_text">SASS(SCSS)</span></h2>
+					<div class="slides_4">
+						<div class="slide_col_1">
+							<img width="102%" height="102%" data-src="img/SASS_slaid_3.png">
+						</div>
+						<div class="slide_col_2">							
+							<p class="fragment orange_text">1) Nesting;</p>
+							<p class="fragment orange_text">2) Variables;</p>
+							<p class="fragment orange_text">3) Math;</p>
+							<p class="fragment orange_text">4) Mixins;</p>
+							<p class="fragment orange_text">5) Imports;</p>
+							<p class="fragment orange_text">6) Cycles & Conditional expression;</p>
+							<p class="fragment orange_text">7) Extends & Placeholders.</p>							
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Compiling <span class="orange_text">SASS(SCSS)</span></h2>
+					<img width="75%" height="75%" data-src="img/sassmeister.png">
+					<p><small>If you want to see how this works, <span class="orange_text">GO HERE =></span> <a href="http://www.sassmeister.com">sassmeister.com</a></small></p>
+				</section>
+				<section>
+					<h2>Nesting</h2>
+					<div class="slide_for_examples">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.block {
+								  width: 200px;
+								  h2 {
+								    border-bottom: 1px solid red;
+								  }
+								  .content {
+								    padding-left: 10px;
+								  }
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.block {
+								  width: 200px;
+								}
+								.block h2 {
+								  border-bottom: 1px solid red;
+								}
+								.block .content {
+								  padding-left: 10px;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Nesting</h2>
+					<div class="slide_for_examples">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								input {
+								  &::-webkit-input-placeholder {
+								    color: red;
+								  }
+								  &::-moz-placeholder {
+								    color: red;
+								  }
+								  &:-ms-input-placeholder {
+								    color: red;
+								  }
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								input::-webkit-input-placeholder{
+								  color: red;
+								}
+								input::-moz-placeholder {
+								  color: red;
+								}
+								input:-ms-input-placeholder {
+								  color: red;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Variables</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								$text-color: #fc0;
+								$bg: url(img/bg.png) no-repeat;
+								$border: 1px solid red;
+								$basic-font: Arial, Tahoma, sans-serif;
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.block {
+								  background: $bg;
+								  color: $text-color;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Math</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								$width: 960px;
+								$column: $width/12;
+								.page {
+								  width: 8*$column;
+								}
+								.sidebar {
+								  width: 4*$column;
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.page {
+								  width: 640px;
+								}
+
+								.sidebar {
+								  width: 320px;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Mixins</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								@mixin my_opacity {
+								  -webkit-transition: opacity 1s ease-in;
+								  -moz-transition: opacity 1s ease-in;
+								  transition: opacity 1s ease-in;
+								}
+								.block {
+								  height: 100px;
+								  background: #fc0;
+								}
+								.block:hover {
+								  opacity: 0.5;
+								  @include my_opacity;
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.block {
+								  height: 100px;
+								  background: #fc0;
+								}
+								.block:hover {
+								  opacity: 0.5;
+								  -webkit-transition: opacity 1s ease-in;
+								  -moz-transition: opacity 1s ease-in;
+								  transition: opacity 1s ease-in;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Mixins</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								@mixin box($width, $color, $bg: #f0f0f0) {
+								  border: $width solid $color;
+								  padding: 20px;
+								  background: $bg;
+								}
+								.block {
+								  @include box(2px, #333);
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.block {
+								  border: 2px solid #333;
+								  padding: 20px;
+								  background: #f0f0f0;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Mixins</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								@mixin column($count, $width) {
+								  -webkit-columns: $count $width;
+								  -moz-columns: $count $width;
+								  columns: $count $width;
+								}
+								.page {
+								  @include column(2, 200px);
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.page {
+								  -webkit-columns: 2 200px;
+								  -moz-columns: 2 200px;
+								  columns: 2 200px;
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Imports</h2>
+					<img width="60%" height="60%" data-src="img/gendalf.jpg">
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								@import "bourbon/bourbon";
+								body {
+								 @include linear-gradient(#1e5799, #2989d8); 
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								body {
+								  background-color: #1e5799;
+								  background-image: -webkit-linear-gradient(#1e5799, #2989d8);
+								  background-image: linear-gradient(#1e5799, #2989d8);
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Cycles & Conditional expression</h2>					
+					<div class="slide_for_examples ">
+						<div class="examples_col_3 fragment">
+							<img data-src="img/sassless-4.jpg">
+						</div>
+						<div class="examples_col_3 fragment">
+							<img data-src="img/sassless-5.jpg">
+						</div>
+						<div class="examples_col_3 fragment">
+							<img data-src="img/sassless-6.jpg">
+						</div>											
+					</div>
+				</section>
+				<section>
+					<h2>Cycles & Conditional expression</h2>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								%craft {
+								  background: url(images/craft.png) no-repeat;
+								  width: 27px; height: 31px;
+								  display: inline-block;
+								  margin-right: 10px;
+								}
+								@for $i from 0 through 2 {
+								  .craft#{$i} {
+								    @extend %craft;
+								    $length: -31px*$i;  
+								    background-position: 0 $length;
+								  }
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">CSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								.craft0, .craft1, .craft2 {
+								  background: url(images/craft.png) no-repeat;
+								  width: 27px;
+								  height: 31px;
+								  display: inline-block;
+								  margin-right: 10px;
+								}
+								.craft0 {
+								  background-position: 0 0px;
+								}
+								.craft1 {
+								  background-position: 0 -31px;
+								}
+								.craft2 {
+								  bac
+								}
+							</code></pre>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<h2>Extends & Placeholders</h2>
+					<div class="slide_for_examples ">						
+						<img data-src="img/sassless-3.jpg">						
+					</div>
+				</section>
+				<section>				
+					<h2>Extends & Placeholders</h2>
+					<h3 class="orange_text">@extends</h3>
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">						
+							<pre><code class="hljs" data-trim contenteditable>
+								.browser {
+								  min-height: 16px; 
+								  padding-left: 20px; 
+								  background-repeat: no-repeat;
+								}
+								.ie { 
+								  @extend .browser;
+								  background-image: url(../img/browser_ie.png);
+								}
+								.cr { 
+								  @extend .browser;
+								  background-image: url(../img/browser_cr.png); 
+								}
+								.fx { 
+								  @extend .browser;
+								  background-image: url(../img/browser_fx.png); 
+								}
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<img data-src="img/morfiys.jpg">					
+						</div>						
+					</div>
+				</section>				
+				<section>
+					<h2>What is the difference <span class="orange_text">SASS</span> and <span class="orange_text">SCSS</span></h2>				
+					<div class="slide_for_examples ">
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SASS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								$font-stack:    Helvetica, sans-serif
+								$primary-color: #333
+								body
+								  font: 100% $font-stack
+								  color: $primary-color
+							</code></pre>
+						</div>
+						<div class="examples_col fragment">
+							<h4 class="orange_text">SCSS</h4>
+							<pre><code class="hljs" data-trim contenteditable>
+								$font-stack:    Helvetica, sans-serif;
+								$primary-color: #333;
+
+								body {
+								  font: 100% $font-stack;
+								  color: $primary-color;
+								}
+							</code></pre>
+						</div>												
+					</div>
+					<div class="fragment">
+						<h3 class="orange_text">--CSS--</h3>
+							<pre><code class="hljs" data-trim contenteditable>
+								body {
+								  font: 100% Helvetica, sans-serif;
+								  color: #333;
+								}
+							</code></pre>
+					</div>					
+				</section>
+				<section>
+					<h2><span class="orange_text">Thank you for attention!</span></h2>
+					<img data-src="img/rojers.jpg">		
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
